@@ -24,6 +24,7 @@ class CreateGamesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('slider');
             $table->float('price');
+            $table->timestamps();
         });
     }
 
