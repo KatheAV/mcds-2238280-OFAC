@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
     public function run()
     {
     	// Metodo Insert
-
         DB::table('users')->insert([
         	'fullname'  => 'Jeremias Springfield',
         	'email'     => 'jeremias@gmail.com',
@@ -29,7 +28,6 @@ class UserSeeder extends Seeder
         ]);
 
         // Metodo ORM
-
         $user = new User;
         $user->fullname  = 'Homero Simpson';
         $user->email     = 'homero@gmail.com';
