@@ -22,14 +22,23 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $gender = $this->faker->randomElement($array = array('Female', 'Male'));
+        
+        if($gender == 'Female') {
+        	$fullName = $this->faker->firstNameFemale;
+        }else{
+        	$fullName = $this->faker->firstNameMale;
+        }
+
         return [
-            'fullname'          => $this->faker->name,
+            'fullname'          => $fullName ,
             'email'             => $this->faker->unique()->safeEmail,
-            'phone'             => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
-            'birthdate'         => $this->faker->date,
-            'gender'            => $this->faker->randomElement($array = array('Female', 'Male')),
+            'phone'             => $this->faker->numberBetween($min = 3101000000, $max = 3202000000),
+            'birthdate'         => $this->faker->dateTimeBetween($startDate = '-60 years', $endDate = '-21 years'),
+            'gender'            => $gender,
             'address'           => $this->faker->streetAddress,
-            'role'              => 'Editor',
+            'photo'				=> $this->faker->image('public/imgs', 160, 160, 'people'),
+            'role'              => 'Editor',  
             'email_verified_at' => now(),
             'password'          => bcrypt('editor'), 
             'remember_token'    => Str::random(10),
