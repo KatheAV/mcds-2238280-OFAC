@@ -37,7 +37,7 @@ class UserFactory extends Factory
             'birthdate'         => $this->faker->dateTimeBetween($startDate = '-60 years', $endDate = '-21 years'),
             'gender'            => $gender,
             'address'           => $this->faker->streetAddress,
-            'photo'				=> $this->faker->image($dir = 'public/imgs', 160, 160, 'persons'),
+            'photo'				=> $this->faker->image($dir = 'public/imgs', 160, 160, 'people'),
             'role'              => 'Editor',  
             'email_verified_at' => now(),
             'password'          => bcrypt('editor'), 
