@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hello', function () {
+    return '<h1> Hello! MCDS :) </h1>';
+});
+
+Route::get('allusers', function () {
+    $users = App\Models\User::take(5)->get();
+    dd($users);
+});
+
+Route::get('showuser/{id}', function (Request $request) {
+    $id = $request->id;
+    $user = App\Models\User::find($id);
+    return view('showuser')->with('user', $user);
+});
+
