@@ -68,3 +68,11 @@ Route::get('challenge', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('examples', function () {
+    $user = App\Models\User::limit(10)->get();
+    if (View::exists('examples')) {
+        return view('examples')->with('users',$user);
+    } 
+});
+
