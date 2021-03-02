@@ -45,7 +45,6 @@ Route::get('showuser/{id}', function (Request $request) {
         $day = Carbon::createFromFormat('Y-m-d', $value["birthdate"])->format('d');
         $yearOld = $date -$yearUser; 
         $fechaCreacion = $value["created_at"];
-
         //echo $date1->locale($boringLanguage)->diffForHumans($date2);
         $fechaCreacion->diffForHumans();
         Carbon::createFromFormat('Y-m-d', $fechaCreacion)->diffForHumans();
@@ -65,14 +64,20 @@ Route::get('challenge', function () {
     }
     dd($results);
 });
+
 Auth::routes();
 
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('examples', function () {
+/*Route::get('examples', function () {
     $user = App\Models\User::limit(10)->get();
     if (View::exists('examples')) {
         return view('examples')->with('users',$user);
     } 
-});
+});*/
 
+Route::get('viewusers', function() {
+    $users = App\Models\User::all();
+    return view('viewusers')->with('users', $users);
+});
