@@ -70,14 +70,11 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/*Route::get('examples', function () {
-    $user = App\Models\User::limit(10)->get();
-    if (View::exists('examples')) {
-        return view('examples')->with('users',$user);
-    } 
-});*/
-
 Route::get('viewusers', function() {
     $users = App\Models\User::all();
     return view('viewusers')->with('users', $users);
+});
+
+Route::get('examples', function () {
+    return view('examples');
 });
