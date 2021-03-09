@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('hello', function () {
-    return '<h1> Hello! MCDS :) </h1>';
+    return "<h1> Hello! MCDS =) </h1>";
 });
 
 Route::get('allusers', function () {
@@ -34,26 +34,6 @@ Route::get('showuser/{id}', function (Request $request) {
     return view('showuser')->with('user', $user);
 });
 
-/*Route::get('users', function () {
-    $user = App\Models\User::limit(10)->get();
-    $date = date('Y');
-    echo Carbon::now(); die;
-    foreach ($user as $key => $value) {
-        
-        $yearUser = Carbon::createFromFormat('Y-m-d', $value["birthdate"])->format('Y');
-        $month =  Carbon::createFromFormat('Y-m-d', $value["birthdate"])->format('m');
-        $day = Carbon::createFromFormat('Y-m-d', $value["birthdate"])->format('d');
-        $yearOld = $date -$yearUser; 
-        $fechaCreacion = $value["created_at"];
-        //echo $date1->locale($boringLanguage)->diffForHumans($date2);
-        $fechaCreacion->diffForHumans();
-        Carbon::createFromFormat('Y-m-d', $fechaCreacion)->diffForHumans();
-     
-       $birthDate =  $value["birthdate"];
-       $fullName =  $value["fullname"];
-       echo "<br>".$fullName."->".$yearOld." Años - Creado-> ";
-    }
-});*/
 
 Route::get('challenge', function () {
 
@@ -65,16 +45,20 @@ Route::get('challenge', function () {
     dd($results);
 });
 
-Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('viewusers', function() {
     $users = App\Models\User::all();
     return view('viewusers')->with('users', $users);
 });
 
-Route::get('examples', function () {
+Route::get('examples', function() {
     return view('examples');
 });
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('locale/{locale}', [App\Http\Controllers\LocaleController::class, 'index']);
+
+//Route::get('locale/{locale}', 'LocaleController@index');
