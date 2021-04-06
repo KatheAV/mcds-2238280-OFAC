@@ -78,7 +78,7 @@
                     confirmButtonColor: '#1e5f74',
                     cancelButtonColor: '#d0211c',
                     confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
+                    }).then((result) => {
                     if (result.value) {
                         $(this).parent().submit();
                     }
@@ -90,16 +90,15 @@
                 $q = $(this).val();
                 $t = $('input[name=_token]').val();
                 $m = $('#tmodel').val();
-
                 $('.loader').removeClass('d-none');
                 $('.table').hide();
                 $sto = setTimeout(function() {
                     clearTimeout($sto);
                     $.post($m+"/search", {q: $q, _token: $t},
                         function (data) {
-                            $('.loader').addClass('d-none');
-                            $('#content').html(data); 
-                            $('.table').fadeIn('slow'); 
+                              $('.loader').addClass('d-none');
+                              $('#content').html(data); 
+                              $('.table').fadeIn('slow'); 
                         }
                     );
                 }, 2000);

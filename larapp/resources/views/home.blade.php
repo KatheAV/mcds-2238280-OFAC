@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Dashboard')
+@section('title', 'Dashboard')
 @section('content')
     <div class="row">
         <div class="col-md-10 offset-md-1">
@@ -33,7 +33,7 @@
                         <div class="card">
                                 <img src="{{ asset('imgs/bg-categories.svg') }}" width="240px" class="my-2 img-top-card" height="154px">
                                 <div class="card-body">
-                                    <a href="{{-- route('categories.index') --}}" class="btn btn-block btn-larapp">
+                                    <a href="{{ route('categories.index') }}" class="btn btn-block btn-larapp">
                                         <i class="fas fa-list-alt"></i>
                                         Module Categories
                                     </a>
