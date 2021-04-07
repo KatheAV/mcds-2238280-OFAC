@@ -7,24 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-	use HasFactory;
+    use HasFactory;
 
-	protected $fillable = [
-		'name',
-		'image',
-		'description',
-		'user_id',
-		'category_id',
-		'slider',
-		'price'
+    protected $fillable = [
+        'name',
+        'image',
+        'description',
+        'user_id',
+        'category_id',
+        'slider',
+        'price'
 
-	];
+    ];
 
-	public function user() {
-		return $this->belongsTo('App\Models\User');
-	}
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 
-	public function category() {
-		return $this->belongsTo('App\Models\Category');
-	}
+    public function category() {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function scopeNames($games, $q)
+    {
+        if (trim($q)) {
+            $games->where('name', 'LIKE', "%$q%")
+            ->orWhere('description', 'LIKE', "%$q%");
+        }
+    }
+
 }
