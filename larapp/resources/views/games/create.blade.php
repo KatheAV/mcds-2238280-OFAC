@@ -59,7 +59,7 @@
                                 </div>
                                 <button type="button" class="btn btn-block btn-secondary btn-upload"> 
                                     <i class="fas fa-upload"></i>
-                                    Upload Category Image 
+                                    Upload Game Image 
                                 </button>
                                 <input id="photo" type="file" class="form-control d-none @error('image') is-invalid @enderror" name="image" accept="image/*">
                                 @error('image')

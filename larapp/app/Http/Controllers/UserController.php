@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use PDF;
 
 class UserController extends Controller
 {
@@ -123,5 +124,11 @@ class UserController extends Controller
     public function search(Request $request) {
         $users = User::names($request->q)->orderBy('id', 'DESC')->paginate(10);
         return view('users.search')->with('users', $users);
+    }
+
+    public function pdf() {
+        $users = User::all();
+        $pdf = PDF::loadView('users.pdf', compact('users'));
+        return $pdf->download('allusers.pdf');
     }
 }
