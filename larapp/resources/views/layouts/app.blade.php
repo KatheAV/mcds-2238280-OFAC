@@ -64,6 +64,16 @@
                 }
             });
             /* - - - - - - - - - - - - - - - - - - */
+            @if (session('error'))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: '{{ session('error') }}',
+                showConfirmButton: false,
+                timer: 4000
+            });
+            @endif
+            /* - - - - - - - - - - - - - - - - - - */
             $('.btn-upload').click(function() {
                 $('#photo').click();
             });
