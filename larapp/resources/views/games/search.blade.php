@@ -4,10 +4,14 @@
         <td><img src="{{ asset($game->category->image) }}" width="36px" class="img-thumbnail rounded-circle"></td>
         <td>
             @if($game->slider == 1 || $game->slider == 0)
-                <button class="btn btn-sm btn-danger">No</button>
+            <button class="btn btn-sm btn-danger">
+                <i class="fas fa-eye-slash"></i>
+            </button>
             @else
-                    <button class="btn  btn-sm btn-success">Yes</button>
-            @endif
+            <button class="btn  btn-sm btn-success">
+               <i class="fas fa-eye"></i>
+           </button>
+           @endif
         </td>
 
         <td>

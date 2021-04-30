@@ -12,6 +12,16 @@ use App\Imports\UserImport;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -123,8 +133,9 @@ class UserController extends Controller
         }
     }
 
+
     public function search(Request $request) {
-        $users = User::names($request->q)->orderBy('id', 'DESC')->paginate(10);
+        $users = User::names($request->q)->orderBy('id', 'DESC')->paginate(50);
         return view('users.search')->with('users', $users);
     }
 
@@ -143,4 +154,5 @@ class UserController extends Controller
         \Excel::import(new UserImport, $file);
         return redirect()->back()->with('message', 'Usuarios importados con exito!');
     }
+
 }

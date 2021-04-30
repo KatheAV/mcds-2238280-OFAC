@@ -11,6 +11,16 @@ use Auth;
 class GameController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -79,7 +89,7 @@ class GameController extends Controller
     {
         $categories = Category::all();
         return view('games.edit')->with('categories', $categories)
-                                 ->with('game', $game);
+        ->with('game', $game);
     }
 
     /**
