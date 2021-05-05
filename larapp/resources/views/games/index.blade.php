@@ -35,7 +35,7 @@
                                 <td><img src="{{ asset($game->category->image) }}" width="36px" class="img-thumbnail rounded-circle"></td>
                                 <td>
                                     @if($game->slider == 1 || $game->slider == 0)
-                                        <button class="btn btn-sm btn-danger">
+                                        <button class="btn btn-sm btn-dark">
                                             <i class="fas fa-eye-slash"></i>
                                         </button>
                                     @else

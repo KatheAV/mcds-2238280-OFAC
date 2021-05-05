@@ -27,18 +27,24 @@
 <div class="row">
     <div class="col-md-4 offset-md-4">
         <div class="form-group">
-            <select name="" id="" class="form-control">
+            @csrf
+            <select name="idcat" id="idcat" class="form-control">
                 <option value="">Seleccione...</option>
+                <option value="0">All Categories</option>
                 @foreach ($cats as $cat)
                 <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                 @endforeach
             </select>
         </div>
+        <div class="loader d-none text-center mt-5">
+            <img src="{{ asset('imgs/rings.svg') }}" width="120px" alt="">
+            <br><br>
+        </div>
     </div>
 </div>
 {{-- --}}
 <div class="row justify-content-center">
-    <div class="col-md-12">
+    <div class="col-md-12" id="content">
         @foreach ($cats as $cat)
         <h3 class="mt-5"> <img src="{{ asset($cat->image) }}" width="80px"> </h3>
         <hr>

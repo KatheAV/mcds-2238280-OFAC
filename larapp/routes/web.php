@@ -79,6 +79,9 @@ Route::get('export/users/pdf', [UserController::class, 'pdf']);
 // Excel
 Route::get('export/users/excel', [UserController::class, 'excel']);
 Route::post('import/users/excel', [UserController::class, 'import']);
+// Filter
+Route::post('gamesbycat', [HomeController::class, 'gamesbycat']);
+
 
 // Group Middleware
 Route::group(['middleware' => 'admin'], function() {
